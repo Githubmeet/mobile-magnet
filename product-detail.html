@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="cart.css">
+  <style>
+ /* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+.jumbotron {
+    background-image: url('holi1.jpg');
+    background-color: #848a9077;
+    background-size: cover;
+    color: rgb(11, 0, 0);
+    text-align: center;
+    padding: 25px;
+    margin-bottom: 0;
+}
+
+.containers {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+#productDetails {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+#productDetails:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.details-container {
+  flex: 1;
+  padding-left: 60px;
+}
+
+h2 {
+  margin-bottom: 30px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+
+h2:hover::after {
+  width: 100%;
+}
+
+p {
+  margin-bottom: 30px;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.button {
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: linear-gradient(to right, #0056b3, #007bff);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .containers {
+    padding: 50px;
+  }
+
+  #productDetails {
+    width: 103% !important;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .image-container {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .details-container {
+    padding-left: 0;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+}
+/* Existing styles above */
+
+/* Media query for screens smaller than 768px (mobile devices) */
+@media (max-width: 768px) {
+  /* Adjust containers */
+  .containers {
+    padding: 20px;
+  }
+
+  #productDetails {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .image-container {
+    border-radius: 20px;
+    max-width: 100%;
+    margin-bottom: 20px; /* Adjust margin for spacing */
+  }
+
+  .details-container {
+    padding-left: 0;
+  }
+
+  h2 {
+    font-size: 24px; /* Decrease font size */
+    margin-bottom: 20px; /* Adjust margin for spacing */
+  }
+
+  p {
+    font-size: 16px; /* Decrease font size */
+    margin-bottom: 20px; /* Adjust margin for spacing */
+  }
+
+  .price {
+    font-size: 20px; /* Decrease font size */
+    margin-bottom: 20px; /* Adjust margin for spacing */
+  }
+
+  button {
+    padding: 12px 24px; /* Adjust padding for button */
+    font-size: 16px; /* Decrease font size */
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Magnet </a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-cogs fa-lg"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="display-4">Your Product Details</h1>
+      <p class="lead">Manage the items in your cart</p>
+
+      <!-- <p class="lead" id="welcomeMessage" style="display: none;">Welcome, User!</p> -->
+  </div>
+
+
+  <div class="containers">
+    <div id="productDetails">
+      <div class="image-container">
+        <!-- <img src="${product.image}" alt="${product.name}"> -->
+      </div>
+      <div class="details-container">
+        <!-- <h2>${product.name}</h2>
+        <p>${product.description}</p>
+        <div class="price">Price: ₹${product.price}</div>
+        <button onclick="addToCart('${product.id}')"><i class="fas fa-cart-plus"></i> Add to Cart</button> -->
+      </div>
+    </div>
+  </div>  
+  <footer id="footerMobile" class="footer-nav-mobile">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i> Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="admin_product.html"><i class="fas fa-cogs fa-lg"></i> Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i> Login</a>
+        </li>
+
+      </ul>
+    </div>
+  </footer> 
+  <footer class="footer mt-auto py-3 bg-dark text-white">
+    <div class="container text-center">
+      <p>&copy; 2024 Magnet. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Get the product ID from the query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // Retrieve the product data from localStorage
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const product = products.find(p => p.id === productId);
+
+    if (product) {
+      // Render the product details
+      const productDetails = document.getElementById('productDetails');
+      productDetails.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <div>
+          <h2>${product.name}</h2>
+          <p>${product.description}</p>
+          <p>Price: ₹${product.price}</p>
+          <button class="button" onclick="addToCart('${product.id}')"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      `;
+    } else {
+      console.error('Product not found');
+    }
+
+    // Function to add the product to the cart
+    function addToCart(productId) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingProductIndex = cart.findIndex(item => item.id === productId);
+
+      if (existingProductIndex !== -1) {
+        cart[existingProductIndex].quantity++;
+      } else {
+        const cartItem = {
+          id: productId,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: 1
+        };
+        cart.push(cartItem);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product.name} has been added to the cart.`);
+    }
+  </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+</body>
+</html>

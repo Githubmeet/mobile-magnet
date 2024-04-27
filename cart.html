@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="footer.css">  
+    <style>
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #50727b2c !important; /* Dark clay color */
+    color: #333;
+}
+
+.navbar {
+    background-color: #35374B !important; /* Dark clay color */
+}
+
+.jumbotron {
+    background-image: url('holi1.jpg');
+    background-color: #848a9077;
+    background-size: cover;
+    color: rgb(11, 0, 0);
+    text-align: center;
+    padding: 100px;
+    margin-bottom: 0;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.contain {
+    margin: 20px;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.link-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.link-container a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.link-container a:hover {
+    color: #0056b3;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+td img {
+    max-width: 50px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Input and button styles */
+input[type="number"] {
+    width: 65px;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    border: 2px solid #ccc
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.button1 {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 30px;
+    width: 20%;
+    font-size: 1.1rem;
+}
+
+/* Bill summary styles */
+#billSummary {
+    margin-top: 20px;
+    border-top: 2px solid #007bff;
+    padding-top: 10px;
+}
+
+#billSummary h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+#billSummary div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .contain {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .button1 {
+        width: 100%; /* Full width for button on smaller screens */
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem; /* Smaller font size for brand on smaller screens */
+    }
+
+    .jumbotron {
+        padding: 50px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1rem; /* Smaller font size for brand on even smaller screens */
+    }
+
+    .jumbotron {
+        padding: 30px; /* Further adjust padding for smallest screens */
+    }
+}
+/* Add this style to your existing CSS */
+
+/* Table container styles */
+.table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    max-width: 100%; /* Ensure the table container does not overflow its parent */
+    margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+/* Table styles */
+table {
+    width: max-content; /* Allow the table to be as wide as its content */
+    min-width: 100%; /* Ensure the table takes up full width of the container */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* Remaining table styles as before */
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">Magnet </a>
+          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+    
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-cogs fa-lg"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+          <h1 class="display-4">Your Cart</h1>
+          <p class="lead">Manage the items in your cart</p>
+    
+          <!-- <p class="lead" id="welcomeMessage" style="display: none;">Welcome, User!</p> -->
+      </div>
+        <div class="contain">
+            <div class="table-container">
+                <table id="cartTable">
+                    <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Cart items will be added here -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total:</td>
+                <td id="cartTotal">₹0.00</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    <div id="billSummary">
+        <h2>Bill Summary</h2>
+        <div>
+            <div>Subtotal:</div>
+            <div id="subtotal">₹0.00</div>
+        </div>
+        <div>
+            <div>Tax:</div>
+            <div id="tax">₹0.00</div>
+        </div>
+        <div>
+            <div>Shipping:</div>
+            <div id="shipping">₹0.00</div>
+        </div>
+        <div>
+            <div>Total:</div>
+            <div id="total">₹0.00</div>
+        </div>
+    </div>
+
+    <button id="clearCartBtn">Clear Cart</button><hr>
+    <a href="shipping.html">
+    <button class="button1">shipping address</button></a>
+   </div>
+   <footer id="footerMobile" class="footer-nav-mobile">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i> Cart</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="admin_product.html"><i class="fas fa-cogs fa-lg"></i> Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i> Login</a>
+        </li>
+
+      </ul>
+    </div>
+  </footer> 
+  <footer class="footer mt-auto py-3 bg-dark text-white">
+    <div class="container text-center">
+      <p>&copy; 2024 Magnet. All rights reserved.</p>
+    </div>
+  </footer>
+  
+    <script>
+        // Retrieve the cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Function to render the cart items and bill summary
+        function renderCartItems() {
+            const tableBody = document.getElementById('cartTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';
+
+            let cartTotal = 0;
+
+            for (let i = 0; i < cart.length; i++) {
+                const cartItem = cart[i];
+                const row = document.createElement('tr');
+
+                const productCell = document.createElement('td');
+                const image = document.createElement('img');
+                image.src = cartItem.image;
+                image.style.maxWidth = '50px';
+                image.style.marginRight = '10px';
+                const name = document.createElement('span');
+                name.textContent = cartItem.name;
+                productCell.appendChild(image);
+                productCell.appendChild(name);
+                row.appendChild(productCell);
+
+                const priceCell = document.createElement('td');
+                priceCell.textContent = `₹${cartItem.price}`;
+                row.appendChild(priceCell);
+
+                const quantityCell = document.createElement('td');
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.min = '1';
+                quantityInput.value = cartItem.quantity;
+                quantityInput.onchange = () => updateCartItemQuantity(i, quantityInput.value);
+                quantityCell.appendChild(quantityInput);
+                row.appendChild(quantityCell);
+
+                const itemTotal = cartItem.price * cartItem.quantity;
+                const totalCell = document.createElement('td');
+                totalCell.textContent = `₹${itemTotal.toFixed(2)}`;
+                row.appendChild(totalCell);
+
+                const actionsCell = document.createElement('td');
+                const removeButton = document.createElement('button');
+                removeButton.innerHTML = '<i class="fas fa-trash"></i>';
+                removeButton.onclick = () => removeCartItem(i);
+                actionsCell.appendChild(removeButton);
+                row.appendChild(actionsCell);
+
+                tableBody.appendChild(row);
+
+                cartTotal += itemTotal;
+            }
+
+            // Update the cart total
+            const cartTotalElement = document.getElementById('cartTotal');
+            cartTotalElement.textContent = `₹${cartTotal.toFixed(2)}`;
+
+            // Calculate bill summary
+            const subtotal = cartTotal;
+            const taxRate = 0.01; // 10% tax rate
+            const tax = subtotal * taxRate;
+            const shipping = 50; // Example shipping charge
+            const total = subtotal + tax + shipping;
+
+            // Update bill summary elements
+            document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
+            document.getElementById('shipping').textContent = `₹${shipping.toFixed(2)}`;
+            document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+        }
+
+        // Function to update the cart item quantity
+        function updateCartItemQuantity(index, newQuantity) {
+            cart[index].quantity = parseInt(newQuantity, 10);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCartItems();
+        }
+
+        // Function to remove a cart item
+        function removeCartItem(index) {
+            const confirmRemove = confirm('Are you sure you want to remove this item from the cart?');
+            if (confirmRemove) {
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCartItems();
+            }
+        }
+
+        // Function to clear the cart
+        function clearCart() {
+            const confirmClear = confirm('Are you sure you want to clear the cart?');
+            if (confirmClear) {
+                localStorage.removeItem('cart');
+                cart.length = 0;
+                renderCartItems();
+            }
+        }
+
+        // Increment quantity function
+        function incrementQuantity(index) {
+            cart[index].quantity++;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCartItems();
+        }
+
+        // Decrement quantity function
+        function decrementQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCartItems();
+            }
+        }
+
+        // Update the clear cart button event
+        document.getElementById('clearCartBtn').addEventListener('click', clearCart);
+
+        // Render the cart items when the page loads
+        renderCartItems();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Address</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="footer.css">
+    <style>
+        body{
+          font-family: Arial, sans-serif;
+          background-color: #50727b2c !important; /* Dark clay color */
+
+        }
+        .navbar {
+            background-color: #35374B !important;
+            /* Dark clay color */
+            /* position :absolute; */
+        }
+
+        .jumbotron {
+            background-image: url('holi1.jpg');
+            background-color: #848a9077;
+            background-size: cover;
+            color: rgb(11, 0, 0);
+            text-align: center;
+            padding: 100px;
+            margin-bottom: 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+
+        .containers {
+            margin: 50px;
+            /* width: 100%; */
+            /* max-width: 1000px; */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+
+        }
+
+        .form-container {
+            flex: 1;
+        }
+
+        .bill-summary-container {
+            flex: 1;
+            padding-left: 20px;
+            margin: 50px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            width: 25%;
+            font-size: 1.1rem;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Bill summary styles */
+        #billSummary {
+            border-top: 2px solid #007bff;
+            padding-top: 10px;
+        }
+
+        #billSummary h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        #billSummary div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .button1{
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            width: 40%;
+            font-size: 1.1rem;
+
+        }
+        /* CSS for Mobile Responsiveness */
+@media only screen and (max-width: 768px) {
+  .jumbotron {
+    padding: 50px 20px; /* Reduce padding for smaller screens */
+  }
+
+  .containers {
+    flex-direction: column; /* Stack containers vertically */
+    margin: 10px; /* Adjust margin for smaller screens */
+    margin-bottom: 30px;
+
+  }
+
+  .form-container,
+  .bill-summary-container {
+    padding: 10px; /* Add padding to inner containers */
+    margin: 20px 0; /* Adjust margin for smaller screens */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%; /* Full width for input fields */
+  }
+
+  input[type="submit"],
+  .button1 {
+    width: 100%; /* Full width for buttons */
+  }
+}
+
+/* Additional Styles */
+.navbar-brand {
+  font-size: 1.3rem; /* Adjust brand font size for smaller screens */
+}
+
+.navbar-toggler {
+  border-color: #fff; /* Navbar toggle button color */
+}
+
+.navbar-nav .nav-link {
+  margin-right: 10px; /* Adjust spacing between navbar links */
+}
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">Magnet </a>
+          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+    
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-cogs fa-lg"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+          <h1 class="display-4">Shipping Address</h1>
+          <p class="lead">Fill the Shipping Address  Form to complete your order.</p>
+    
+          <!-- <p class="lead" id="welcomeMessage" style="display: none;">Welcome, User!</p> -->
+      </div>
+      <section>
+    <div class="containers">
+        <div class="form-container">
+            <h1>Shipping Address</h1>
+            <form id="shippingForm">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+
+                <label for="zipCode">Pin Code:</label>
+                <input type="text" id="zipCode" name="zipCode" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+            </form>
+            <a href="pay.html">
+                <button class="button1">Process For Payment</button></a>            
+            <!-- <input type="submit" value="Submit"> -->
+
+        </div>
+
+        <div class="bill-summary-container">
+            <div id="billSummary">
+                <h2>Bill Summary</h2>
+                <div>
+                    <div>Subtotal:</div>
+                    <div id="subtotal">₹0.00</div>
+                </div>
+                <div>
+                    <div>Tax (10%):</div>
+                    <div id="tax">₹0.00</div>
+                </div>
+                <div>
+                    <div>Shipping:</div>
+                    <div id="shipping">₹0.00</div>
+                </div>
+                <div>
+                    <div>Total:</div>
+                    <div id="total">₹0.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footerMobile" class="footer-nav-mobile">
+      <div class="container">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i> Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_product.html"><i class="fas fa-cogs fa-lg"></i> Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i> Login</a>
+          </li>
+  
+        </ul>
+      </div>
+    </footer> 
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+      <div class="container text-center">
+        <p>&copy; 2024 Magnet. All rights reserved.</p>
+      </div>
+    </footer>
+      
+</section>
+    <script>
+        // Retrieve cart and bill summary from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let billSummary = {
+            subtotal: 0,
+            taxRate: 0.01, // 10% tax rate
+            shipping: 50, // Example shipping charge
+            total: 0
+        };
+
+        function calculateBillSummary() {
+            let cartTotal = 0;
+            for (let i = 0; i < cart.length; i++) {
+                cartTotal += cart[i].price * cart[i].quantity;
+            }
+
+            billSummary.subtotal = cartTotal;
+            billSummary.tax = billSummary.subtotal * billSummary.taxRate;
+            billSummary.total = billSummary.subtotal + billSummary.tax + billSummary.shipping;
+
+            // Update bill summary elements
+            document.getElementById('subtotal').textContent = `₹${billSummary.subtotal.toFixed(2)}`;
+            document.getElementById('tax').textContent = `₹${billSummary.tax.toFixed(2)}`;
+            document.getElementById('shipping').textContent = `₹${billSummary.shipping.toFixed(2)}`;
+            document.getElementById('total').textContent = `₹${billSummary.total.toFixed(2)}`;
+        }
+
+        calculateBillSummary(); // Calculate and display initial bill summary
+
+        // Handle form submission
+        document.getElementById('shippingForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // You can add logic here to handle the shipping address and other data
+            const shippingData = {
+                fullName: document.getElementById('fullName').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zipCode: document.getElementById('zipCode').value,
+                phone: document.getElementById('phone').value
+            };
+
+            console.log('Shipping Address Data:', shippingData);
+            alert('Shipping address submitted successfully!');
+
+            // You can redirect or perform other actions after submission
+
+            this.reset(); // Reset the form after submission
+        });
+    </script>
+</body>
+
+</html>

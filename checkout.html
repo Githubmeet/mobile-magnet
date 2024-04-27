@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="cart.css">
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    .link-container {
+      margin-bottom: 20px;
+    }
+
+    .link-container a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .link-container a:hover {
+      color: #666;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    form input,
+    form select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #45a049;
+    }
+
+    #paymentForm {
+      margin-top: 20px;
+    }
+
+    #billSummary {
+      margin-top: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #billSummary table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #billSummary th, #billSummary td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #billSummary tfoot td {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Checkout</h1>
+  <div class="link-container">
+    <a href="index.html"><i class="fas fa-home"></i> Back to Homepage</a>
+    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+  </div>
+
+  <div id="shippingAddressForm">
+    <h2>Shipping Address</h2>
+    <form id="shippingForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" required><br>
+
+      <label for="city">City name:</label>
+      <input type="text" id="city" required>
+
+      <label for="state">State:</label>
+      <input type="text" id="state" required><br>
+
+      <label for="zip">Pin Code:</label>
+      <input type="text" id="zip" required>
+
+      <button type="submit">Proceed to Payment</button>
+    </form>
+  </div>
+
+  <div id="paymentForm" style="display: none;">
+    <h2>Payment</h2>
+    <form id="paymentMethodForm">
+      <label for="paymentMethod">Payment Method:</label>
+      <select id="paymentMethod" required>
+        <option value="">Select a payment method</option>
+        <option value="credit-card">Credit Card</option>
+        <option value="paypal">PayPal</option>
+      </select>
+
+      <div id="creditCardForm" style="display: none;">
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="text" id="expiryDate" placeholder="MM/YY" required>
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" maxlength="3" placeholder="xxx" required>
+      </div>
+
+      <button type="button" onclick="placeOrder()">Place Order</button>
+    </form>
+  </div>
+
+  <div id="billSummary" style="display: none;">
+    <h2>Bill Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="billSummaryItems"></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Subtotal:</td>
+          <td id="subtotal"></td>
+        </tr>
+        <tr>
+          <td colspan="3">Shipping:</td>
+          <td id="shipping">$10.00</td>
+        </tr>
+        <tr>
+          <td colspan="3">Total:</td>
+          <td id="total"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script>
+    // Retrieve the cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Function to handle payment method form submission
+    const paymentMethodForm = document.getElementById('paymentMethodForm');
+    paymentMethodForm.addEventListener('change', e => {
+      const paymentMethod = e.target.value;
+      const creditCardForm = document.getElementById('creditCardForm');
+
+      if (paymentMethod === 'credit-card') {
+        creditCardForm.style.display = 'block';
+      } else {
+        creditCardForm.style.display = 'none';
+      }
+    });
+
+    // Function to place the order
+    function placeOrder() {
+      const shippingForm = document.getElementById('shippingForm');
+      const paymentMethodForm = document.getElementById('paymentMethodForm');
+
+      if (shippingForm.reportValidity() && paymentMethodForm.reportValidity()) {
+        const shippingAddress = {
+          name: document.getElementById('name').value,
+          address: document.getElementById('address').value,
+          city: document.getElementById('city').value,
+          state: document.getElementById('state').value,
+          zip: document.getElementById('zip').value
+        };
+
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        let paymentDetails;
+
+        if (paymentMethod === 'credit-card') {
+          paymentDetails = {
+            cardNumber: document.getElementById('cardNumber').value,
+            expiryDate: document.getElementById('expiryDate').value,
+            cvv: document.getElementById('cvv').value
+          };
+        } else {
+          paymentDetails = { method: 'paypal' };
+        }
+
+        // Calculate the total
+        const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+        const shipping = 10; // Fixed shipping cost of $10
+        const total = subtotal + shipping;
+
+        // Show the bill summary
+        showBillSummary(cart, subtotal, shipping, total);
+      }
+    }
+
+    // Function to show the bill summary
+    function showBillSummary(cart, subtotal, shipping, total) {
+      const billSummaryItems = document.getElementById('billSummaryItems');
+billSummaryItems.innerHTML = '';
+cart.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.quantity}</td>
+      <td>${item.price}</td>
+      <td>${item.quantity * item.price}</td>
+    `;
+    billSummaryItems.appendChild(row);
+  });
+
+  document.getElementById('subtotal').textContent = subtotal.toFixed(2);
+  document.getElementById('shipping').textContent = `$${shipping.toFixed(2)}`;
+  document.getElementById('total').textContent = total.toFixed(2);
+
+  const shippingAddressForm = document.getElementById('shippingAddressForm');
+  const paymentForm = document.getElementById('paymentForm');
+  shippingAddressForm.style.display = 'none';
+  paymentForm.style.display = 'none';
+
+  const billSummary = document.getElementById('billSummary');
+  billSummary.style.display = 'block';
+}
+
+// Show the shipping address form initially
+const shippingAddressForm = document.getElementById('shippingAddressForm');
+shippingAddressForm.style.display = 'block';
+
+// Handle shipping form submission
+const shippingForm = document.getElementById('shippingForm');
+shippingForm.addEventListener('submit', e => {
+  e.preventDefault();
+  shippingAddressForm.style.display = 'none';
+  const paymentForm = document.getElementById('paymentForm');
+  paymentForm.style.display = 'block';
+});
+</script>
+</body>
+</html>
